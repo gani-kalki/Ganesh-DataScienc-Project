@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Time Series Analysis</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f5f9;
+            min-height: 100vh;
+        }
+
+
+        /* Main container */
+
+        .overview-container {
+            width: 92%;
+            max-width: 1400px;
+            margin: 40px auto;
+            background-color: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+
+        /* Page title */
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .page-title h1 {
+            font-size: 30px;
+            color: #1e3a8a;
+            letter-spacing: 1px;
+        }
+
+        .page-title p {
+            margin-top: 8px;
+            color: #64748b;
+            font-size: 16px;
+        }
+
+
+        /* Two halves */
+
+        .content-section {
+            display: flex;
+            gap: 30px;
+            align-items: stretch;
+        }
+
+
+        /* Left side */
+
+        .left-section {
+            flex: 1;
+            background-color: #f8fafc;
+            border-radius: 16px;
+            padding: 25px;
+        }
+
+
+        /* Right side */
+
+        .right-section {
+            flex: 1;
+            background-color: #f8fafc;
+            border-radius: 16px;
+            padding: 25px;
+        }
+
+
+        /* Video */
+
+       .video-box {
+    width: 100%;
+    height: 280px;
+    background-color: #1e293b;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.video-box video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+        /* Links */
+
+        .resource-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .resource-links a {
+            text-decoration: none;
+            background-color: #1e3a8a;
+            color: white;
+
+            padding: 10px 20px;
+            border-radius: 20px;
+
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .resource-links a:hover {
+            background-color: #172554;
+            transform: translateY(-2px);
+        }
+
+
+        /* Architecture */
+
+        .architecture {
+            margin-top: 30px;
+        }
+
+        .architecture h2 {
+            font-size: 22px;
+            color: #1e3a8a;
+            margin-bottom: 15px;
+        }
+
+        .architecture-box {
+    width: 100%;
+    height: 320px;
+    border: 2px dashed #94a3b8;
+    border-radius: 12px;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.architecture-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+
+        /* Right side title */
+
+        .experiment-title {
+            font-size: 25px;
+            color: #1e3a8a;
+            margin-bottom: 25px;
+        }
+
+
+        /* Experiment list */
+
+        .experiment-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .experiment {
+            background-color: white;
+            border-radius: 10px;
+            padding: 14px 16px;
+
+            color: #334155;
+            font-size: 15px;
+
+            border-left: 4px solid #1e3a8a;
+
+            transition: 0.3s;
+        }
+
+        .experiment:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .experiment strong {
+            color: #1e3a8a;
+        }
+
+
+        /* Summary */
+
+        .summary {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid #cbd5e1;
+        }
+
+        .summary h2 {
+            font-size: 22px;
+            color: #1e3a8a;
+            margin-bottom: 12px;
+        }
+
+        .summary p {
+            color: #475569;
+            font-size: 15px;
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+
+        /* Back button */
+
+        .back-section {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back-button {
+            display: inline-block;
+
+            text-decoration: none;
+
+            background-color: #1e3a8a;
+            color: white;
+
+            padding: 11px 25px;
+            border-radius: 25px;
+
+            font-size: 15px;
+        }
+
+        .back-button:hover {
+            background-color: #172554;
+        }
+
+
+        /* Responsive design */
+
+        @media (max-width: 900px) {
+
+            .content-section {
+                flex-direction: column;
+            }
+
+        }
+
+    
+
+
+/* ===== Professional UI refinement (CSS only) ===== */
+:root {
+    --brand: #2448a8;
+    --brand-dark: #18347f;
+    --ink: #172033;
+    --muted: #64748b;
+    --surface-soft: #f7f9fd;
+    --line: #e2e8f0;
+    --shadow: 0 14px 38px rgba(24, 43, 83, .09);
+}
+html { scroll-behavior: smooth; }
+body {
+    font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+    color: var(--ink);
+    background:
+        radial-gradient(ellipse at top left, rgba(72, 110, 220, .08), transparent 34rem),
+        #f4f7fc;
+    line-height: 1.6;
+}
+.page-container, .overview-container {
+    width: min(94% - 16px, 1380px);
+    margin: clamp(18px, 3vw, 38px) auto;
+    padding: clamp(18px, 2.5vw, 34px);
+    border: 1px solid rgba(226, 232, 240, .9);
+    border-radius: 22px;
+    background: rgba(255,255,255,.96);
+    box-shadow: var(--shadow);
+}
+.page-title { margin-bottom: clamp(22px, 3vw, 34px); }
+.page-title h1 {
+    color: var(--ink);
+    font-size: clamp(23px, 2.6vw, 32px);
+    font-weight: 750;
+    letter-spacing: -.7px;
+    line-height: 1.25;
+}
+.page-title p { color: var(--muted); font-size: 14px; margin-top: 10px; }
+.main-section, .content-section { gap: clamp(16px, 2.4vw, 30px); align-items: stretch; }
+.video-section, .matter-section, .left-section, .right-section {
+    min-width: 0;
+    padding: clamp(18px, 2.2vw, 28px);
+    border: 1px solid #e8edf5;
+    border-radius: 18px;
+    background: linear-gradient(155deg, #fbfcff, #f6f8fd);
+}
+.video-section, .matter-section { flex: 1 1 0; }
+.section-title, .architecture h2, .summary h2 {
+    color: var(--brand);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -.3px;
+    line-height: 1.35;
+}
+.matter-section p, .summary p {
+    color: #526176;
+    font-size: 15px;
+    line-height: 1.8;
+    text-align: left;
+}
+.video-box {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    min-height: 190px;
+    background: #111827;
+    border-radius: 15px;
+    box-shadow: 0 8px 22px rgba(15, 23, 42, .12);
+    overflow: hidden;
+}
+.video-box video { width: 100%; height: 100%; object-fit: contain; display: block; }
+.back-section { margin-top: 30px; }
+.back-button, .resource-links a {
+    background: linear-gradient(135deg, var(--brand), #3865d7);
+    color: #fff;
+    border-radius: 12px;
+    padding: 11px 20px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 5px 12px rgba(36,72,168,.15);
+    transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+.back-button:hover, .resource-links a:hover {
+    background: linear-gradient(135deg, var(--brand-dark), var(--brand));
+    box-shadow: 0 8px 18px rgba(36,72,168,.22);
+    transform: translateY(-2px);
+}
+.python-editor {
+    margin-top: 26px;
+    border: 1px solid #2c3444;
+    border-radius: 14px;
+    box-shadow: 0 14px 28px rgba(15,23,42,.17);
+}
+.editor-header { gap: 14px; padding: 13px 16px; }
+.editor-header button {
+    background: #16865b;
+    border-radius: 8px;
+    padding: 9px 16px;
+    font-weight: 600;
+    transition: background .2s ease, transform .2s ease;
+}
+.editor-header button:hover { background: #0f704a; transform: translateY(-1px); }
+#codeEditor { font-size: 14px; line-height: 1.65; tab-size: 4; }
+.output-header { padding: 12px 16px; }
+#output { font-size: 13px; line-height: 1.6; }
+.resource-links { flex-wrap: wrap; gap: 10px; }
+.overview-container { max-width: 1440px; }
+.page-title h1 { overflow-wrap: anywhere; }
+.experiment-title { color: var(--ink); font-size: clamp(21px, 2.2vw, 27px); letter-spacing: -.5px; }
+.experiment-list { gap: 12px; }
+.experiment {
+    border: 1px solid #e5eaf3;
+    border-left: 4px solid var(--brand);
+    border-radius: 12px;
+    padding: 15px 17px;
+    background: #fff;
+    line-height: 1.6;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.experiment:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(24,43,83,.08); }
+.experiment strong { color: var(--brand); }
+.architecture-box {
+    border: 1px solid #d9e2f0;
+    border-radius: 14px;
+    background: #fff;
+    min-height: 220px;
+}
+.summary { border-top-color: var(--line); }
+@media (max-width: 900px) {
+    .main-section, .content-section { flex-direction: column; }
+    .video-section, .matter-section, .left-section, .right-section { width: 100%; }
+    .video-box { min-height: 0; }
+}
+@media (max-width: 600px) {
+    .page-container, .overview-container {
+        width: calc(100% - 20px);
+        margin: 10px auto;
+        padding: 16px;
+        border-radius: 16px;
+    }
+    .video-section, .matter-section, .left-section, .right-section { padding: 16px; border-radius: 14px; }
+    .page-title { margin-bottom: 22px; }
+    .matter-section p, .summary p { font-size: 14px; }
+    .resource-links { justify-content: stretch; }
+    .resource-links a { flex: 1 1 auto; text-align: center; }
+    .editor-header { align-items: center; flex-wrap: wrap; }
+    #codeEditor { min-height: 240px; font-size: 13px; }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+    <div class="overview-container">
+
+
+        <!-- Page title -->
+
+        <div class="page-title">
+
+            <h1>EXP 6 — TIME SERIES ANALYSIS</h1>
+
+            <p>Data Science Laboratory</p>
+
+        </div>
+
+
+        <!-- Left and right sections -->
+
+        <div class="content-section">
+
+
+            <!-- LEFT HALF -->
+
+            <div class="left-section">
+
+
+                <!-- Video -->
+
+                <div class="video-box">
+                    <video controls>
+            <source src="Video.mp4" type="video/mp4">
+           </video>
+                </div>
+
+
+                <!-- Resources -->
+
+                <div class="resource-links">
+
+                    <a href="#" target="_blank">
+                        GitHub
+                    </a>
+
+                    <a href="#" target="_blank">
+                        Read More
+                    </a>
+
+                    <a href="#" target="_blank">
+                        Resources
+                    </a>
+
+                </div>
+
+
+                <!-- Architecture -->
+
+                <div class="architecture">
+
+                    <h2>ARCHITECTURE OF EXPERIMENT</h2>
+
+                    <div class="architecture-box">
+                         <img src="Architecture.png" alt="Time Series Analysis Architecture">
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- RIGHT HALF -->
+
+            <div class="right-section">
+
+
+                <h2 class="experiment-title">
+                    TIME SERIES ANALYSIS
+                </h2>
+
+
+                <!-- A-G Experiments -->
+
+                <div class="experiment-list">
+
+
+                    <div class="experiment">
+
+                        <strong>A.</strong>
+                        Creating Time Series with Datetime
+
+                    </div>
+
+
+                    <div class="experiment">
+
+                        <strong>B.</strong>
+                        Generating DatetimeIndex with date_range
+
+                    </div>
+
+
+                    <div class="experiment">
+
+                        <strong>C.</strong>
+                        Time Zones and Time Zone Conversion
+
+                    </div>
+
+
+                    <div class="experiment">
+
+                        <strong>D.</strong>
+                        Period Arithmetic and period_range
+
+                    </div>
+
+
+                    <div class="experiment">
+
+                        <strong>E.</strong>
+                        Converting Periods to Different Frequencies
+
+                    </div>
+
+
+                    <div class="experiment">
+
+                        <strong>F.</strong>
+                        Converting Time Series to Periods
+
+                    </div>
+
+
+                    <div class="experiment">
+
+                        <strong>G.</strong>
+                        Resampling, Downsampling and Upsampling
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- Summary -->
+
+                <div class="summary">
+
+                    <h2>SUMMARY / ANALYSIS</h2>
+
+                    <p>
+
+                        Time Series Analysis is used to work with data
+                        collected and organized according to time. In this
+                        experiment, Pandas provides tools for creating and
+                        manipulating timestamps, generating DatetimeIndex
+                        objects, handling different time zones and working
+                        with periods.
+
+                        The experiment also covers period arithmetic,
+                        frequency conversion and converting timestamp-based
+                        Series and DataFrame objects into periods. Finally,
+                        resampling techniques such as downsampling and
+                        upsampling are performed to change the frequency
+                        of time series data.
+
+                        These operations provide a foundation for
+                        understanding, processing and analyzing
+                        time-dependent datasets.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <!-- Back button -->
+
+        <div class="back-section">
+
+            <a href="app.html" class="back-button">
+                ← Back to Laboratory
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>

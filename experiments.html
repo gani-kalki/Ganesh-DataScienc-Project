@@ -1,0 +1,324 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Data Science Laboratory | Experiments</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1e293b;
+            line-height: 1.7;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: #172554;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        nav h2 {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 22px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #93c5fd;
+        }
+
+        /* Page Heading */
+        .page-header {
+            text-align: center;
+            padding: 45px 20px 35px;
+        }
+
+        .page-header .subtitle {
+            color: #2563eb;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .page-header h1 {
+            color: #172554;
+            font-size: 34px;
+            margin-bottom: 12px;
+        }
+
+        .page-header p {
+            color: #64748b;
+            max-width: 760px;
+            margin: auto;
+            font-size: 16px;
+        }
+
+        /* Experiments Layout */
+        .experiments-container {
+            max-width: 1100px;
+            margin: 0 auto 55px;
+            padding: 0 22px;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 25px;
+            align-items: stretch;
+        }
+
+        /* Experiment Cards */
+        .experiment-card {
+            background: #ffffff;
+            padding: 28px;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            box-shadow: 0 5px 18px rgba(15, 23, 42, 0.05);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .experiment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(15, 23, 42, 0.10);
+        }
+
+        .experiment-number {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1d4ed8;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .experiment-card h2 {
+            color: #172554;
+            font-size: 21px;
+            line-height: 1.4;
+            margin-bottom: 13px;
+        }
+
+        .experiment-card p {
+            color: #475569;
+            font-size: 15px;
+            text-align: justify;
+        }
+
+        .experiment-card h3 {
+            color: #334155;
+            font-size: 15px;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        .topics {
+            padding-left: 20px;
+            color: #475569;
+            font-size: 14px;
+        }
+
+        .topics li {
+            margin-bottom: 5px;
+            padding-left: 2px;
+        }
+
+        .topics li::marker {
+            color: #2563eb;
+        }
+
+        /* Full-width card for the last experiment */
+        .experiment-card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* Footer */
+        footer {
+            background: #172554;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 18px;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 750px) {
+            .experiments-container {
+                grid-template-columns: 1fr;
+            }
+
+            .experiment-card.full-width {
+                grid-column: auto;
+            }
+
+            nav {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px 9px;
+            }
+
+            .page-header h1 {
+                font-size: 28px;
+            }
+
+            .experiment-card {
+                padding: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <h2>Data Science Laboratory</h2>
+
+        <div>
+            <a href="App.html">Home</a>
+            <a href="Moverview.html">Modules</a>
+            <a href="experiments.html" class="active">Experiments</a>
+            <a href="tools.html">Tools</a>
+        </div>
+    </nav>
+
+    <!-- Page Heading -->
+    <header class="page-header">
+        <p class="subtitle">Practical Learning</p>
+
+        <h1>Data Science Experiments</h1>
+
+        <p>
+            Explore practical experiments designed to develop your skills
+            in data preparation, visualization, and time-based data analysis
+            using Python and its popular data science libraries.
+        </p>
+    </header>
+
+    <!-- Experiment Cards -->
+    <main class="experiments-container">
+
+        <!-- Experiment 4 -->
+        <section class="experiment-card">
+            <span class="experiment-number">EXPERIMENT 04</span>
+
+            <h2>Data Wrangling</h2>
+
+            <p>
+                This experiment focuses on transforming raw data into a
+                clean, organized, and meaningful format suitable for analysis.
+                Students learn how to handle missing values, remove duplicate
+                records, correct data types, and identify inconsistent data
+                using Python Pandas. It also covers filtering, sorting,
+                grouping, merging, and reshaping datasets. These techniques
+                improve data quality and prepare information for further
+                analysis and visualization.
+            </p>
+
+            <h3>Key Topics</h3>
+
+            <ul class="topics">
+                <li>Data cleaning and preprocessing using Pandas</li>
+                <li>Handling missing values and duplicate records</li>
+                <li>Data type conversion and inconsistent data treatment</li>
+                <li>Filtering, sorting, and grouping datasets</li>
+                <li>Merging and reshaping data</li>
+            </ul>
+        </section>
+
+        <!-- Experiment 5 -->
+        <section class="experiment-card">
+            <span class="experiment-number">EXPERIMENT 05</span>
+
+            <h2>Data Visualization with Matplotlib and Seaborn</h2>
+
+            <p>
+                This experiment introduces graphical techniques for
+                understanding patterns, trends, distributions, and
+                relationships in data. Students learn to create informative
+                charts using Matplotlib and Seaborn. Matplotlib supports
+                detailed customization of plots, while Seaborn provides
+                convenient tools for statistical visualization. Students
+                practice selecting suitable charts, adding labels and
+                legends, and presenting analytical results clearly.
+            </p>
+
+            <h3>Key Topics</h3>
+
+            <ul class="topics">
+                <li>Introduction to Matplotlib and Seaborn</li>
+                <li>Line charts, bar charts, and scatter plots</li>
+                <li>Histograms and distribution plots</li>
+                <li>Box plots, violin plots, and heatmaps</li>
+                <li>Plot titles, labels, legends, and customization</li>
+            </ul>
+        </section>
+
+        <!-- Experiment 6 -->
+        <section class="experiment-card full-width">
+            <span class="experiment-number">EXPERIMENT 06</span>
+
+            <h2>Time Series Analysis</h2>
+
+            <p>
+                This experiment focuses on working with data recorded over
+                time. Students learn to create date ranges, use datetime
+                indexes, manage time zones, and convert between timestamps
+                and periods using Python Pandas. It also covers frequency
+                conversion, resampling, and aggregation of time-series data.
+                These methods help organize chronological datasets and
+                understand changes over time. Time series techniques are
+                useful in weather monitoring, sales analysis, financial
+                data, and sensor monitoring applications.
+            </p>
+
+            <h3>Key Topics</h3>
+
+            <ul class="topics">
+                <li>Creating and working with DatetimeIndex</li>
+                <li>Generating date ranges using date_range()</li>
+                <li>Time zone localization and conversion</li>
+                <li>Period arithmetic and period_range()</li>
+                <li>Changing frequency using asfreq()</li>
+                <li>Converting timestamps using to_period()</li>
+                <li>Resampling and aggregating time-series data</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        Data Science Laboratory | Learning Through Practical Experiments
+    </footer>
+
+</body>
+</html>

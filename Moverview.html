@@ -1,0 +1,311 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science Laboratory - Modules</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1e293b;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+        nav {
+            background: #172554;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        nav h2 {
+            font-size: 22px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 22px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #93c5fd;
+        }
+
+        /* Page heading */
+        .page-header {
+            text-align: center;
+            padding: 45px 20px 30px;
+        }
+
+        .page-header h1 {
+            color: #172554;
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            color: #64748b;
+            max-width: 750px;
+            margin: auto;
+        }
+
+        /* Module cards */
+        .modules-container {
+            max-width: 1100px;
+            margin: 0 auto 50px;
+            padding: 0 22px;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .module-card {
+            background: white;
+            padding: 28px;
+            border-radius: 14px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 5px 18px rgba(15, 23, 42, 0.05);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(15, 23, 42, 0.1);
+        }
+
+        .module-number {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1d4ed8;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .module-card h2 {
+            font-size: 21px;
+            color: #172554;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .module-card p {
+            color: #475569;
+            font-size: 15px;
+            text-align: justify;
+        }
+
+        .module-card h3 {
+            color: #334155;
+            font-size: 15px;
+            margin-top: 17px;
+            margin-bottom: 7px;
+        }
+
+        .topics {
+            padding-left: 20px;
+            color: #475569;
+            font-size: 14px;
+        }
+
+        .topics li {
+            margin-bottom: 4px;
+        }
+
+        footer {
+            background: #172554;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 18px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 700px) {
+            .modules-container {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav a {
+                margin: 0 8px;
+                display: inline-block;
+            }
+
+            .page-header h1 {
+                font-size: 27px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <h2>Data Science Laboratory</h2>
+        <div>
+            <a href="App.html">Home</a>
+            <a href="Moverview.html">Modules</a>
+            <a href="experiments.html">Experiments</a>
+            <a href="tools.html">Tools</a>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1>Data Science Laboratory Modules</h1>
+        <p>
+            Explore the five modules of the Data Science Laboratory.
+            Each module introduces important concepts, techniques, and
+            methods used to understand, process, analyze, and interpret data.
+        </p>
+    </header>
+
+    <main class="modules-container">
+
+        <!-- Module 1 -->
+        <section class="module-card">
+            <span class="module-number">MODULE 01</span>
+            <h2>Introduction to Data Science</h2>
+            <p>
+                This module introduces the fundamental concepts of Data Science
+                and its role in extracting useful information from data. It
+                explains the data science lifecycle, different types of data,
+                data collection, data preprocessing, and the skills required
+                by a data scientist. Students learn how data analysis supports
+                decision-making and how descriptive, diagnostic, predictive,
+                and prescriptive analytics are used to solve real-world problems.
+            </p>
+
+            <h3>Key Topics</h3>
+            <ul class="topics">
+                <li>Definition, scope, and applications of Data Science</li>
+                <li>Data types and data collections</li>
+                <li>Data preprocessing and cleaning</li>
+                <li>Types of data analytics</li>
+            </ul>
+        </section>
+
+        <!-- Module 2 -->
+        <section class="module-card">
+            <span class="module-number">MODULE 02</span>
+            <h2>Data Extraction and Feature Selection</h2>
+            <p>
+                This module focuses on preparing datasets for effective analysis
+                and machine learning. Students learn how to extract relevant
+                information, identify useful features, and reduce unnecessary
+                or redundant attributes. It introduces feature selection
+                approaches, including filter and wrapper methods, and explains
+                concepts such as entropy, decision trees, and random forests
+                as tools for evaluating features and building predictive models.
+            </p>
+
+            <h3>Key Topics</h3>
+            <ul class="topics">
+                <li>Data extraction and feature selection</li>
+                <li>Filter and wrapper methods</li>
+                <li>Entropy and information gain</li>
+                <li>Introduction to decision trees and random forests</li>
+            </ul>
+        </section>
+
+        <!-- Module 3 -->
+        <section class="module-card">
+            <span class="module-number">MODULE 03</span>
+            <h2>Feature Selection and Decision Tree Foundations</h2>
+            <p>
+                This module explores how to identify the most informative
+                attributes in a dataset and use them to construct decision
+                trees. Students study feature relevance, splitting criteria,
+                entropy, information gain, and the Gini index. The module
+                explains how decision trees divide data into smaller groups
+                to make predictions and how tree depth, pruning, and feature
+                selection affect model complexity and predictive performance.
+            </p>
+
+            <h3>Key Topics</h3>
+            <ul class="topics">
+                <li>Feature relevance and selection criteria</li>
+                <li>Decision tree construction</li>
+                <li>Entropy, information gain, and Gini index</li>
+                <li>Tree pruning and model evaluation</li>
+            </ul>
+        </section>
+
+        <!-- Module 4 -->
+        <section class="module-card">
+            <span class="module-number">MODULE 04</span>
+            <h2>Ensemble Learning</h2>
+            <p>
+                This module introduces ensemble learning, a machine learning
+                approach that combines multiple models to improve prediction
+                quality. Students explore how combining the outputs of
+                different learners can improve accuracy, stability, and
+                generalization. The module covers bagging, boosting, and
+                random forests, highlighting their working principles,
+                advantages, limitations, and applications in classification
+                and prediction tasks.
+            </p>
+
+            <h3>Key Topics</h3>
+            <ul class="topics">
+                <li>Fundamentals of ensemble learning</li>
+                <li>Bagging and boosting techniques</li>
+                <li>Random forest algorithm</li>
+                <li>Advantages and applications of ensembles</li>
+            </ul>
+        </section>
+
+        <!-- Module 5 -->
+        <section class="module-card">
+            <span class="module-number">MODULE 05</span>
+            <h2>Dimensionality Reduction</h2>
+            <p>
+                This module explains techniques for reducing the number of
+                features in high-dimensional datasets while preserving
+                important information. Students learn why high dimensionality
+                can increase computational cost and make analysis more
+                difficult. The module introduces Principal Component Analysis
+                (PCA) and Singular Value Decomposition (SVD), explaining how
+                these techniques transform data into a smaller representation
+                that can support visualization, efficient computation, and
+                machine learning.
+            </p>
+
+            <h3>Key Topics</h3>
+            <ul class="topics">
+                <li>Curse of dimensionality</li>
+                <li>Dimensionality reduction concepts</li>
+                <li>Principal Component Analysis (PCA)</li>
+                <li>Singular Value Decomposition (SVD)</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer>
+        Data Science Laboratory | Learning Through Practical Experiments
+    </footer>
+
+</body>
+</html>

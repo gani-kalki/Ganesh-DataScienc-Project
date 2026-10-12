@@ -1,0 +1,496 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Data Science Laboratory | Tools</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1e293b;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+        nav {
+            background: #172554;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        nav h2 {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 22px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #93c5fd;
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            padding: 45px 20px 35px;
+        }
+
+        .subtitle {
+            color: #2563eb;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .page-header h1 {
+            color: #172554;
+            font-size: 34px;
+            margin-bottom: 12px;
+        }
+
+        .page-header p {
+            color: #64748b;
+            max-width: 760px;
+            margin: auto;
+            font-size: 16px;
+        }
+
+        /* Tools Grid */
+        .tools-container {
+            max-width: 1150px;
+            margin: 0 auto 55px;
+            padding: 0 22px;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        /* Tool Card */
+        .tool-card {
+            background: #ffffff;
+            padding: 26px;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            box-shadow: 0 5px 18px rgba(15, 23, 42, 0.05);
+            transition: transform 0.25s, box-shadow 0.25s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(15, 23, 42, 0.10);
+        }
+
+        /* Tool Icon */
+        .tool-icon {
+            width: 54px;
+            height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #dbeafe;
+            color: #1d4ed8;
+            border-radius: 12px;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 17px;
+        }
+
+        .tool-card h2 {
+            color: #172554;
+            font-size: 20px;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .tool-card p {
+            color: #475569;
+            font-size: 14px;
+            text-align: justify;
+            margin-bottom: 16px;
+        }
+
+        .tool-card h3 {
+            color: #334155;
+            font-size: 14px;
+            margin-bottom: 7px;
+        }
+
+        .tool-topics {
+            padding-left: 19px;
+            color: #475569;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .tool-topics li {
+            margin-bottom: 4px;
+        }
+
+        .tool-topics li::marker {
+            color: #2563eb;
+        }
+
+        /* Visit Tool Button */
+        .tool-link {
+            display: inline-block;
+            margin-top: auto;
+            text-align: center;
+            text-decoration: none;
+            background: #172554;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .tool-link:hover {
+            background: #2563eb;
+        }
+
+        /* Information Section */
+        .info-section {
+            max-width: 1100px;
+            margin: 0 auto 50px;
+            padding: 28px;
+            background: #eaf1ff;
+            border: 1px solid #d5e3ff;
+            border-radius: 14px;
+        }
+
+        .info-section h2 {
+            color: #172554;
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+
+        .info-section p {
+            color: #475569;
+            font-size: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: #172554;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 18px;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 950px) {
+            .tools-container {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .info-section {
+                margin-left: 22px;
+                margin-right: 22px;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .tools-container {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px 9px;
+            }
+
+            .page-header h1 {
+                font-size: 28px;
+            }
+
+            .tool-card {
+                padding: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <h2>Data Science Laboratory</h2>
+
+        <div>
+            <a href="App.html">Home</a>
+            <a href="Moverview.html">Modules</a>
+            <a href="experiments.html">Experiments</a>
+            <a href="tools.html" class="active">Tools</a>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <p class="subtitle">Technology and Resources</p>
+
+        <h1>Data Science Tools</h1>
+
+        <p>
+            Explore the programming languages, libraries, development
+            environments, and machine learning tools used to clean,
+            analyze, visualize, and interpret data in practical
+            Data Science applications.
+        </p>
+    </header>
+
+    <!-- Tools Cards -->
+    <main class="tools-container">
+
+        <!-- Python -->
+        <section class="tool-card">
+            <div class="tool-icon">Py</div>
+
+            <h2>Python</h2>
+
+            <p>
+                Python is a widely used programming language in Data Science
+                because of its simple syntax and extensive library ecosystem.
+                It supports data processing, automation, statistical analysis,
+                visualization, and machine learning.
+            </p>
+
+            <h3>Key Uses</h3>
+            <ul class="tool-topics">
+                <li>Data processing and analysis</li>
+                <li>Automation and scripting</li>
+                <li>Machine learning development</li>
+            </ul>
+
+            <a class="tool-link"
+               href="https://www.python.org/"
+               target="_blank"
+               rel="noopener noreferrer">
+                Explore Python ↗
+            </a>
+        </section>
+
+        <!-- Pandas -->
+        <section class="tool-card">
+            <div class="tool-icon">Pd</div>
+
+            <h2>Pandas</h2>
+
+            <p>
+                Pandas is a Python library designed for working with
+                structured data. Its Series and DataFrame objects help
+                users load, clean, filter, transform, and summarize datasets
+                efficiently.
+            </p>
+
+            <h3>Key Uses</h3>
+            <ul class="tool-topics">
+                <li>Handling missing and duplicate values</li>
+                <li>Filtering and grouping records</li>
+                <li>Reading CSV and Excel files</li>
+            </ul>
+
+            <a class="tool-link"
+               href="https://pandas.pydata.org/"
+               target="_blank"
+               rel="noopener noreferrer">
+                Explore Pandas ↗
+            </a>
+        </section>
+
+        <!-- NumPy -->
+        <section class="tool-card">
+            <div class="tool-icon">Np</div>
+
+            <h2>NumPy</h2>
+
+            <p>
+                NumPy provides efficient multidimensional arrays and
+                numerical computing functions. It is useful for mathematical
+                operations, matrix calculations, statistical computations,
+                and scientific data processing.
+            </p>
+
+            <h3>Key Uses</h3>
+            <ul class="tool-topics">
+                <li>Arrays and matrix operations</li>
+                <li>Statistical calculations</li>
+                <li>Numerical transformations</li>
+            </ul>
+
+            <a class="tool-link"
+               href="https://numpy.org/"
+               target="_blank"
+               rel="noopener noreferrer">
+                Explore NumPy ↗
+            </a>
+        </section>
+
+        <!-- Matplotlib -->
+        <section class="tool-card">
+            <div class="tool-icon">Mp</div>
+
+            <h2>Matplotlib</h2>
+
+            <p>
+                Matplotlib is a Python visualization library that helps
+                represent numerical information through charts and graphs.
+                It offers control over figure size, labels, colors, legends,
+                axes, and other plot elements.
+            </p>
+
+            <h3>Key Uses</h3>
+            <ul class="tool-topics">
+                <li>Line and bar charts</li>
+                <li>Histograms and scatter plots</li>
+                <li>Customizing graphs and figures</li>
+            </ul>
+
+            <a class="tool-link"
+               href="https://matplotlib.org/"
+               target="_blank"
+               rel="noopener noreferrer">
+                Explore Matplotlib ↗
+            </a>
+        </section>
+
+        <!-- Seaborn -->
+        <section class="tool-card">
+            <div class="tool-icon">Sb</div>
+
+            <h2>Seaborn</h2>
+
+            <p>
+                Seaborn is a statistical data visualization library built
+                on Matplotlib. It simplifies the creation of informative
+                statistical plots and works well with Pandas DataFrames
+                for exploring patterns and relationships in datasets.
+            </p>
+
+            <h3>Key Uses</h3>
+            <ul class="tool-topics">
+                <li>Heatmaps and correlation analysis</li>
+                <li>Box plots and violin plots</li>
+                <li>Distribution and relationship plots</li>
+            </ul>
+
+            <a class="tool-link"
+               href="https://seaborn.pydata.org/"
+               target="_blank"
+               rel="noopener noreferrer">
+                Explore Seaborn ↗
+            </a>
+        </section>
+
+        <!-- Jupyter Notebook -->
+        <section class="tool-card">
+            <div class="tool-icon">J</div>
+
+            <h2>Jupyter Notebook</h2>
+
+            <p>
+                Jupyter Notebook is an interactive environment where users
+                can write and execute Python code, display visualizations,
+                document their process, and combine explanations with
+                computational results in a single notebook.
+            </p>
+
+            <h3>Key Uses</h3>
+            <ul class="tool-topics">
+                <li>Interactive Python programming</li>
+                <li>Step-by-step data exploration</li>
+                <li>Combining code, output, and notes</li>
+            </ul>
+
+            <a class="tool-link"
+               href="https://jupyter.org/"
+               target="_blank"
+               rel="noopener noreferrer">
+                Explore Jupyter ↗
+            </a>
+        </section>
+
+        <!-- Scikit-learn -->
+        <section class="tool-card">
+            <div class="tool-icon">Sk</div>
+
+            <h2>Scikit-learn</h2>
+
+            <p>
+                Scikit-learn is a machine learning library for Python.
+                It provides tools for preparing features, training models,
+                evaluating predictions, and applying common supervised
+                and unsupervised learning algorithms.
+            </p>
+
+            <h3>Key Uses</h3>
+            <ul class="tool-topics">
+                <li>Classification and regression</li>
+                <li>Clustering and dimensionality reduction</li>
+                <li>Model evaluation and preprocessing</li>
+            </ul>
+
+            <a class="tool-link"
+               href="https://scikit-learn.org/"
+               target="_blank"
+               rel="noopener noreferrer">
+                Explore Scikit-learn ↗
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Additional Information -->
+    <section class="info-section">
+        <h2>How These Tools Work Together</h2>
+
+        <p>
+            A typical Data Science workflow begins by loading data into
+            Python and using Pandas and NumPy to clean and process it.
+            Matplotlib and Seaborn help visualize patterns and relationships.
+            Jupyter Notebook provides an interactive environment for
+            experimentation and documentation, while Scikit-learn supports
+            machine learning tasks. Together, these tools form a practical
+            foundation for data analysis and predictive modeling.
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        Data Science Laboratory | Learn, Analyze, Visualize
+    </footer>
+
+</body>
+</html>

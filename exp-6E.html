@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EXP 6(E) - Converting Periods and PeriodIndex to Different Frequencies using asfreq()</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f5f9;
+            min-height: 100vh;
+        }
+
+        .page-container {
+            width: 92%;
+            max-width: 1400px;
+            margin: 40px auto;
+            background-color: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .page-title h1 {
+            font-size: 30px;
+            color: #1e3a8a;
+        }
+
+        .page-title p {
+            margin-top: 8px;
+            color: #64748b;
+        }
+
+        .main-section {
+            display: flex;
+            gap: 30px;
+        }
+
+        .video-section {
+            flex: 1;
+            background-color: #f8fafc;
+            border-radius: 16px;
+            padding: 25px;
+        }
+
+        .matter-section {
+            flex: 1;
+            background-color: #f8fafc;
+            border-radius: 16px;
+            padding: 25px;
+        }
+
+        .video-box {
+            width: 100%;
+            height: 350px;
+            background-color: #1e293b;
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .video-box video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 22px;
+            color: #1e3a8a;
+            margin-bottom: 15px;
+        }
+
+        .section-title-s {
+            font-size: 18px;
+            color: #1e3a8a;
+            margin-top:1px;
+            margin-bottom: 3px;
+        }
+
+        .matter-section p {
+            color: #475569;
+            font-size: 16px;
+            line-height: 1.7;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        
+        .back-section {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back-button {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #1e3a8a;
+            color: white;
+            padding: 11px 25px;
+            border-radius: 25px;
+        }
+
+        .python-editor {
+    width: 100%;
+    margin-top: 25px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #1e1e1e;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background: #252526;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.editor-header button {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.editor-header button:hover {
+    background: #218838;
+}
+
+#codeEditor {
+    width: 100%;
+    min-height: 300px;
+    box-sizing: border-box;
+
+    padding: 15px;
+
+    background: #1e1e1e;
+    color: #d4d4d4;
+
+    border: none;
+    outline: none;
+
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 15px;
+    line-height: 1.5;
+
+    resize: vertical;
+}
+
+.output-header {
+    padding: 10px 15px;
+    background: #252526;
+    color: white;
+    font-weight: 600;
+    border-top: 1px solid #444;
+}
+
+#output {
+    margin: 0;
+    padding: 15px;
+
+    min-height: 100px;
+
+    background: #111;
+    color: #00ff88;
+
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 14px;
+
+    white-space: pre-wrap;
+    overflow-x: auto;
+}
+
+    
+
+
+/* ===== Professional UI refinement (CSS only) ===== */
+:root {
+    --brand: #2448a8;
+    --brand-dark: #18347f;
+    --ink: #172033;
+    --muted: #64748b;
+    --surface-soft: #f7f9fd;
+    --line: #e2e8f0;
+    --shadow: 0 14px 38px rgba(24, 43, 83, .09);
+}
+html { scroll-behavior: smooth; }
+body {
+    font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+    color: var(--ink);
+    background:
+        radial-gradient(ellipse at top left, rgba(72, 110, 220, .08), transparent 34rem),
+        #f4f7fc;
+    line-height: 1.6;
+}
+.page-container, .overview-container {
+    width: min(94% - 16px, 1380px);
+    margin: clamp(18px, 3vw, 38px) auto;
+    padding: clamp(18px, 2.5vw, 34px);
+    border: 1px solid rgba(226, 232, 240, .9);
+    border-radius: 22px;
+    background: rgba(255,255,255,.96);
+    box-shadow: var(--shadow);
+}
+.page-title { margin-bottom: clamp(22px, 3vw, 34px); }
+.page-title h1 {
+    color: var(--ink);
+    font-size: clamp(23px, 2.6vw, 32px);
+    font-weight: 750;
+    letter-spacing: -.7px;
+    line-height: 1.25;
+}
+.page-title p { color: var(--muted); font-size: 14px; margin-top: 10px; }
+.main-section, .content-section { gap: clamp(16px, 2.4vw, 30px); align-items: stretch; }
+.video-section, .matter-section, .left-section, .right-section {
+    min-width: 0;
+    padding: clamp(18px, 2.2vw, 28px);
+    border: 1px solid #e8edf5;
+    border-radius: 18px;
+    background: linear-gradient(155deg, #fbfcff, #f6f8fd);
+}
+.video-section, .matter-section { flex: 1 1 0; }
+.section-title, .architecture h2, .summary h2 {
+    color: var(--brand);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -.3px;
+    line-height: 1.35;
+}
+.matter-section p, .summary p {
+    color: #526176;
+    font-size: 15px;
+    line-height: 1.8;
+    text-align: left;
+}
+.video-box {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    min-height: 190px;
+    background: #111827;
+    border-radius: 15px;
+    box-shadow: 0 8px 22px rgba(15, 23, 42, .12);
+    overflow: hidden;
+}
+.video-box video { width: 100%; height: 100%; object-fit: contain; display: block; }
+.back-section { margin-top: 30px; }
+.back-button, .resource-links a {
+    background: linear-gradient(135deg, var(--brand), #3865d7);
+    color: #fff;
+    border-radius: 12px;
+    padding: 11px 20px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 5px 12px rgba(36,72,168,.15);
+    transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+.back-button:hover, .resource-links a:hover {
+    background: linear-gradient(135deg, var(--brand-dark), var(--brand));
+    box-shadow: 0 8px 18px rgba(36,72,168,.22);
+    transform: translateY(-2px);
+}
+.python-editor {
+    margin-top: 26px;
+    border: 1px solid #2c3444;
+    border-radius: 14px;
+    box-shadow: 0 14px 28px rgba(15,23,42,.17);
+}
+.editor-header { gap: 14px; padding: 13px 16px; }
+.editor-header button {
+    background: #16865b;
+    border-radius: 8px;
+    padding: 9px 16px;
+    font-weight: 600;
+    transition: background .2s ease, transform .2s ease;
+}
+.editor-header button:hover { background: #0f704a; transform: translateY(-1px); }
+#codeEditor { font-size: 14px; line-height: 1.65; tab-size: 4; }
+.output-header { padding: 12px 16px; }
+#output { font-size: 13px; line-height: 1.6; }
+.resource-links { flex-wrap: wrap; gap: 10px; }
+.overview-container { max-width: 1440px; }
+.page-title h1 { overflow-wrap: anywhere; }
+.experiment-title { color: var(--ink); font-size: clamp(21px, 2.2vw, 27px); letter-spacing: -.5px; }
+.experiment-list { gap: 12px; }
+.experiment {
+    border: 1px solid #e5eaf3;
+    border-left: 4px solid var(--brand);
+    border-radius: 12px;
+    padding: 15px 17px;
+    background: #fff;
+    line-height: 1.6;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.experiment:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(24,43,83,.08); }
+.experiment strong { color: var(--brand); }
+.architecture-box {
+    border: 1px solid #d9e2f0;
+    border-radius: 14px;
+    background: #fff;
+    min-height: 220px;
+}
+.summary { border-top-color: var(--line); }
+@media (max-width: 900px) {
+    .main-section, .content-section { flex-direction: column; }
+    .video-section, .matter-section, .left-section, .right-section { width: 100%; }
+    .video-box { min-height: 0; }
+}
+@media (max-width: 600px) {
+    .page-container, .overview-container {
+        width: calc(100% - 20px);
+        margin: 10px auto;
+        padding: 16px;
+        border-radius: 16px;
+    }
+    .video-section, .matter-section, .left-section, .right-section { padding: 16px; border-radius: 14px; }
+    .page-title { margin-bottom: 22px; }
+    .matter-section p, .summary p { font-size: 14px; }
+    .resource-links { justify-content: stretch; }
+    .resource-links a { flex: 1 1 auto; text-align: center; }
+    .editor-header { align-items: center; flex-wrap: wrap; }
+    #codeEditor { min-height: 240px; font-size: 13px; }
+}
+
+</style>
+</head>
+
+<body>
+
+    <body>
+    <!-- Python / Pyodide scripts -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.28.2/full/pyodide.js"></script>
+
+    <script>
+        let pyodide;
+
+        async function loadPython() {
+            pyodide = await loadPyodide();
+            console.log("Python loaded");
+        }
+
+        async function runPython() {
+            // run code here
+        }
+
+        loadPython();
+    </script>
+
+</body>
+
+    <div class="page-container">
+
+        <div class="page-title">
+            <h1>EXP 6(E) — Converting Periods and PeriodIndex to Different Frequencies using asfreq()</h1>
+            <p>Data Science Laboratory</p>
+        </div>
+
+        <div class="main-section">
+
+            <!-- EXPERIMENT MATTER -->
+            <div class="matter-section">
+
+    <h2 class="section-title">
+        AIM
+    </h2>
+
+    <p>
+        To convert Pandas Period and PeriodIndex objects 
+        from one frequency to another using the asfreq() method.
+    </p>
+
+
+    <h2 class="section-title">
+        SYNTAX
+    </h2>
+
+    <pre>
+<h2 class="section-title-s">1. Convert a Period to another frequency</h2>
+period.asfreq(freq, how='start')
+<h2 class="section-title-s">2. Convert a PeriodIndex to another frequency</h2>
+period_index.asfreq(freq, how='start')
+<h2 class="section-title-s">Parameters</h2>
+	freq – The target frequency, such as 'D', 'M', 'Q', or 'Y'. 
+	how – Specifies whether to use the start or end of the period. 
+	'start' – Beginning of the period. 
+	'end' – End of the period. 
+
+
+    </pre>
+
+
+    <h2 class="section-title">
+        PROGRAM SOLUTION
+    </h2>
+
+    <pre>
+import pandas as pd
+
+--------------------------------------------------
+1. Create a monthly Period
+---------------------------------------------------
+
+p = pd.Period('2026-01', freq='M')
+
+print("Original Period:")
+print(p)
+
+
+---------------------------------------------------
+2. Convert monthly Period to daily frequency
+---------------------------------------------------
+
+daily_start = p.asfreq('D', how='start')
+
+print("\nMonthly Period converted to Daily (Start):")
+print(daily_start)
+
+
+daily_end = p.asfreq('D', how='end')
+
+print("\nMonthly Period converted to Daily (End):")
+print(daily_end)
+
+
+---------------------------------------------------
+ 3. Create a PeriodIndex
+ ---------------------------------------------------
+
+period_index = pd.period_range(
+    start='2026-01',
+    periods=3,
+    freq='M'
+)
+
+print("\nOriginal PeriodIndex:")
+print(period_index)
+
+
+ ---------------------------------------------------
+ 4. Convert PeriodIndex to daily frequency
+ ---------------------------------------------------
+
+daily_period_index = period_index.asfreq(
+    'D',
+    how='start'
+)
+
+print("\nPeriodIndex converted to Daily Frequency:")
+print(daily_period_index)
+
+
+ ---------------------------------------------------
+ 5. Convert PeriodIndex to daily frequency at end
+ ---------------------------------------------------
+
+daily_period_index_end = period_index.asfreq(
+    'D',
+    how='end'
+)
+
+print("\nPeriodIndex converted to Daily Frequency (End):")
+print(daily_period_index_end)
+
+
+
+    </pre>
+
+
+    <h2 class="section-title">
+       Sample OUTPUT
+    </h2>
+
+    <pre>
+Original Period:
+2026-01
+
+Monthly Period converted to Daily (Start):
+2026-01-01
+
+Monthly Period converted to Daily (End):
+2026-01-31
+
+Original PeriodIndex:
+PeriodIndex(['2026-01', '2026-02', '2026-03'],
+            dtype='period[M]')
+
+PeriodIndex converted to Daily Frequency:
+PeriodIndex(['2026-01-01', '2026-02-01', '2026-03-01'],
+            dtype='period[D]')
+
+PeriodIndex converted to Daily Frequency (End):
+PeriodIndex(['2026-01-31', '2026-02-28', '2026-03-31'],
+            dtype='period[D]')
+ 
+
+
+    </pre>
+
+
+    <h2 class="section-title">
+        RESULT
+    </h2>
+
+    <p>
+       The Period and PeriodIndex objects were successfully converted from 
+       one frequency to another using the asfreq() method. Thus, 
+       frequency conversion of periods was performed successfully.
+    </p>
+
+</div>
+
+     </div>
+
+      <div class="python-editor">
+
+    <div class="editor-header">
+        <span>Python Code</span>
+        <button onclick="runPython()">▶ Run Code</button>
+    </div>
+
+    <textarea id="codeEditor">
+import pandas as pd
+
+data = pd.DataFrame({
+    "Name": ["Alice", "Bob", "Charlie"],
+    "Marks": [85, 90, 78]
+})
+
+print(data)
+    </textarea>
+
+    <div class="output-header">
+        Output
+    </div>
+
+    <pre id="output">
+           Name  Marks
+        0  Alice     85
+        1    Bob     90
+        2 Charlie     78
+    </pre>
+
+</div>
+        <div class="back-section">
+
+            <a href="App.html" class="back-button">
+                ← Back to Laboratory
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
