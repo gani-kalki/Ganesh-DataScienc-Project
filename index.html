@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>Data Science Laboratory</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f5f9;
+            min-height: 100vh;
+        }
+
+        .navbar {
+    width: 100%;
+    height: 65px;
+    background-color: #1e3a8a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.nav-logo img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    background: white;
+    border-radius: 5px;
+}
+
+.nav-logo span {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 50px;
+    margin-right: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: #cbd5e1;
+}
+
+        /* Laboratory Heading */
+
+        header {
+            text-align: center;
+            padding-top: 40px;
+        }
+
+        header h1 {
+            font-size: 32px;
+            color: #1e293b;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #475569;
+        }
+
+        /* Main Section */
+        main {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 30px 60px;
+}
+.modules-card {
+    flex: 1;
+    min-width: 0;
+    min-height: 470px;
+
+    background-color: white;
+    border-radius: 18px;
+    padding: 25px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.modules-card h2 {
+    font-size: 24px;
+    color: #1e3a8a;
+    margin-bottom: 20px;
+}
+
+.module-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.module-item {
+    display: block;
+    text-decoration: none;
+    background-color: #f8fafc;
+    border-radius: 10px;
+    padding: 15px;
+    color: inherit;
+}
+
+.module-item:hover {
+    background-color: #e2e8f0;
+}
+.module-item strong {
+    color: #1e3a8a;
+}
+
+.module-item p {
+    margin-top: 6px;
+    color: #475569;
+}
+        /* ID Card */
+
+        .id-card {
+    width: 400px;
+    min-height: 570px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+        /* Card Heading */
+
+        
+
+        /* Photo */
+
+        .photo {
+            width: 130px;
+            height: 150px;
+
+            margin: 25px auto;
+
+            border: 4px solid #1e3a8a;
+
+            border-radius: 8px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background-color: #e2e8f0;
+
+            color: #64748b;
+        }
+
+        .imagee {
+            width: 150px;
+            height: 150px;
+        }
+        /* Student Details */
+
+        .details {
+            padding: 10px 25px;
+        }
+
+        .details p {
+            display: flex;
+
+            margin-bottom: 14px;
+
+            font-size: 15px;
+
+            color: #334155;
+        }
+
+        .details span {
+            width: 105px;
+
+            font-weight: bold;
+        }
+
+        .details b {
+            font-weight: normal;
+
+            color: #0f172a;
+        }
+
+        .bottom {
+            display: flex;
+            justify-content: space-between;
+        }
+        .card-bottom {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    padding: 0 20px 20px;
+}
+.social-icons {
+    display: flex;
+    justify-content: right;
+    gap: 18px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.social-icons a {
+    color: #1e3a8a;
+    font-size: 24px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    transform: scale(1.2);
+    color: #172554;
+}
+
+.view-more {
+    text-decoration: none;
+    background-color: #1e3a8a;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.view-more:hover {
+    background-color: #172554;
+}
+        /* Search Bar */
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.search-bar {
+    width: 450px;
+    height: 45px;
+
+    padding: 0 20px;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 25px;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+.search-bar:focus {
+    border-color: #1e3a8a;
+    box-shadow: 0 0 5px rgba(30, 58, 138, 0.3);
+}
+
+/* ============================= */
+/* Time Series Analysis Card      */
+/* ============================= */
+.analysis-card {
+    width: calc(100% - 120px);
+    margin: 0 auto 40px;
+
+    background-color: white;
+    border-radius: 18px;
+    padding: 25px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+/* Top section of analysis card */
+
+.analysis-top {
+    display: flex;
+    align-items: center;
+
+    gap: 25px;
+}
+
+
+/* Video */
+
+.video-box {
+    width: 350px;
+    height: 200px;
+    background-color: #1e293b;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.video-box video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+
+/* Heading */
+
+.analysis-heading {
+    font-size: 27px;
+
+    color: #1e3a8a;
+
+    margin: 0;
+}
+
+
+/* Paragraph */
+
+.analysis-content {
+    margin-top: 25px;
+
+    line-height: 1.7;
+
+    font-size: 16px;
+
+    color: #475569;
+
+    text-align: justify;
+}
+
+
+/* ============================= */
+/* Overview Navigation            */
+/* ============================= */
+
+.overview-section {
+    margin-top: 30px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+}
+
+
+/* Overview Oval */
+
+.overview {
+    width: 130px;
+    height: 50px;
+
+    border-radius: 30px;
+    background-color: #1e3a8a;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+
+/* A B C D E F G circles */
+
+.topic {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #e2e8f0;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+
+/* Hover effect */
+
+.topic:hover {
+    background-color: #1e3a8a;
+    color: white;
+    transform: scale(1.1);
+}
+
+.add-exp-section {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.add-exp {
+    text-decoration: none;
+    background-color: #1e3a8a;
+    color: white;
+    padding: 9px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.add-exp:hover {
+    background-color: #172554;
+}
+    
+
+
+/* ===== Professional UI refinement (CSS only) ===== */
+:root {
+    --brand: #2448a8;
+    --brand-dark: #18347f;
+    --brand-soft: #edf2ff;
+    --ink: #172033;
+    --muted: #64748b;
+    --surface: #ffffff;
+    --surface-soft: #f7f9fd;
+    --line: #e2e8f0;
+    --shadow: 0 14px 38px rgba(24, 43, 83, 0.09);
+}
+html { scroll-behavior: smooth; }
+body {
+    font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+    color: var(--ink);
+    background:
+        radial-gradient(ellipse at top left, rgba(72, 110, 220, .09), transparent 34rem),
+        #f4f7fc;
+    line-height: 1.55;
+}
+.navbar {
+    min-height: 68px;
+    height: auto;
+    padding: 14px clamp(18px, 4vw, 58px);
+    background: linear-gradient(115deg, #172f70, #2851b6);
+    box-shadow: 0 5px 22px rgba(22, 44, 102, .2);
+    gap: 24px;
+}
+.nav-logo { margin-left: 0; font-size: 18px; letter-spacing: .4px; }
+.nav-links { gap: clamp(18px, 3vw, 42px); margin-right: 0; flex-wrap: wrap; }
+.nav-links a {
+    font-size: 14px;
+    font-weight: 600;
+    opacity: .92;
+    transition: opacity .2s ease, transform .2s ease;
+}
+.nav-links a:hover { color: #fff; opacity: 1; transform: translateY(-1px); }
+header { padding: 38px 20px 8px; }
+header h1 { font-size: clamp(27px, 3vw, 36px); font-weight: 750; letter-spacing: -.8px; }
+header p { font-size: 15px; color: var(--muted); }
+main {
+    width: min(100% - 48px, 1440px);
+    margin: 0 auto;
+    padding: 28px 0 34px;
+    gap: 28px;
+    align-items: stretch;
+}
+.modules-card, .id-card, .analysis-card {
+    border: 1px solid rgba(226, 232, 240, .9);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+.modules-card { padding: clamp(20px, 2.4vw, 32px); }
+.modules-card h2 { color: var(--ink); font-size: 21px; letter-spacing: -.35px; }
+.module-list { gap: 12px; }
+.module-item {
+    padding: 17px 18px;
+    border: 1px solid var(--line);
+    background: linear-gradient(145deg, #fff, #f9fbff);
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
+}
+.module-item:hover {
+    background: #fff;
+    border-color: #c6d4ff;
+    box-shadow: 0 8px 20px rgba(36, 72, 168, .09);
+    transform: translateY(-2px);
+}
+.module-item strong { color: var(--brand); }
+.module-item p { color: var(--muted); font-size: 14px; }
+.id-card { flex: 0 0 340px; width: 340px; min-height: 0; }
+.photo {
+    width: 132px; height: 148px; margin: 26px auto 20px;
+    border: 4px solid #dce6ff; border-radius: 14px;
+    box-shadow: 0 5px 16px rgba(36, 72, 168, .12);
+    overflow: hidden;
+}
+.imagee { width: 100%; height: 100%; object-fit: cover; }
+.details { padding: 8px 24px 4px; }
+.details p { gap: 8px; font-size: 13px; line-height: 1.45; margin-bottom: 12px; }
+.details span { width: 90px; flex-shrink: 0; color: #475569; }
+.details b { overflow-wrap: anywhere; }
+.social-icons { justify-content: center; gap: 20px; margin: 18px 0 12px; }
+.social-icons a { color: var(--brand); font-size: 21px; }
+.social-icons a:hover { color: var(--brand-dark); transform: translateY(-3px); }
+.card-bottom { padding: 0 22px 22px; margin-top: 12px; }
+.view-more, .add-exp, .resource-links a, .back-button, .overview {
+    background: linear-gradient(135deg, var(--brand), #3865d7);
+    border: 0;
+    box-shadow: 0 5px 12px rgba(36, 72, 168, .15);
+    transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+.view-more:hover, .add-exp:hover, .resource-links a:hover, .back-button:hover, .overview:hover {
+    background: linear-gradient(135deg, var(--brand-dark), var(--brand));
+    box-shadow: 0 8px 18px rgba(36, 72, 168, .22);
+    transform: translateY(-2px);
+}
+.search-container { padding: 8px 24px 28px; }
+.search-bar {
+    width: min(100%, 520px); height: 48px;
+    border: 1px solid #d8e0ed; border-radius: 14px;
+    background: rgba(255,255,255,.92);
+    box-shadow: 0 4px 16px rgba(24, 43, 83, .04);
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+.search-bar:focus { border-color: #7897ed; box-shadow: 0 0 0 4px rgba(56, 101, 215, .12); }
+.analysis-card {
+    width: min(100% - 48px, 1440px);
+    margin: 0 auto 42px;
+    padding: clamp(20px, 2.5vw, 34px);
+}
+.analysis-top { gap: 30px; align-items: center; }
+.analysis-top .video-box { flex: 0 1 360px; width: min(100%, 360px); height: auto; aspect-ratio: 16 / 9; }
+.video-box { border-radius: 15px; background: #101827; box-shadow: 0 8px 22px rgba(15, 23, 42, .12); }
+.analysis-heading { font-size: clamp(22px, 2.4vw, 29px); letter-spacing: -.5px; color: var(--ink); }
+.analysis-content { color: #526176; font-size: 15px; line-height: 1.8; }
+.overview-section { flex-wrap: wrap; gap: 12px; }
+.overview { width: auto; min-width: 125px; height: 46px; padding: 0 22px; font-size: 14px; }
+.topic {
+    width: 44px; height: 44px; font-size: 14px;
+    background: #edf1fa; border: 1px solid #dce4f3;
+    transition: transform .2s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
+}
+.topic:hover { background: var(--brand); color: white; transform: translateY(-3px); box-shadow: 0 7px 15px rgba(36,72,168,.2); }
+.add-exp-section { margin-top: 24px; }
+.add-exp { padding: 11px 19px; border-radius: 12px; font-weight: 600; }
+@media (max-width: 900px) {
+    main { width: min(100% - 32px, 720px); flex-direction: column; }
+    .id-card { width: 100%; flex-basis: auto; }
+    .analysis-card { width: min(100% - 32px, 720px); }
+    .analysis-top { align-items: flex-start; }
+}
+@media (max-width: 620px) {
+    .navbar { align-items: flex-start; flex-direction: column; gap: 12px; padding: 16px 20px; }
+    .nav-links { gap: 18px; }
+    header { padding-top: 28px; }
+    main { width: calc(100% - 24px); padding-top: 20px; gap: 18px; }
+    .modules-card, .analysis-card { padding: 20px; border-radius: 16px; }
+    .analysis-card { width: calc(100% - 24px); }
+    .analysis-top { flex-direction: column; }
+    .analysis-top .video-box { width: 100%; flex-basis: auto; }
+    .analysis-content { text-align: left; }
+    .search-container { padding-bottom: 22px; }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-logo">
+            <img src="https://media.licdn.com/dms/image/v2/D560BAQFbAxZ6Ax5VMQ/company-logo_200_200/company-logo_200_200/0/1706716776378/mohan_babu_university_tirupati_logo?e=2147483647&v=beta&t=i4pGJLH4wJMN6ov4pSK0P2jDH54pU4SuhiJ0R7qDWAY" alt="Mohan Babu University Logo">
+            <span>Mohan Babu University</span>
+        </div>
+    <div class="nav-links">
+        <a href="App.html">Home</a>
+        <a href="Moverview.html">Modules</a>
+        <a href="experiments.html">Experiments</a>
+        <a href="tools.html">Tools</a>
+    </div>
+
+</nav>
+
+    <!-- Laboratory Name -->
+
+    <header>
+
+        <h1>DATA SCIENCE LABORATORY</h1>
+
+        <p>Sub Code: 22DS102006</p>
+
+    </header>
+
+     <div class="search-container">
+          <input 
+        type="text" 
+        class="search-bar"
+        placeholder="Search..."
+        >
+       </div>
+
+    <!-- Main Content -->
+
+    <main>
+
+
+    <div class="modules-card">
+
+        <h2>MODULES</h2>
+
+        <div class="module-list">
+
+            <a href="Module_1_Introduction_to_Data_Science.pdf" target="_blank" class="module-item">
+                <strong>Module 1</strong>
+                <p>Introduction to Data Science</p>
+            </a>
+
+            <a href="Module_2_Data_Extraction.pdf" target="_blank" class="module-item">
+                <strong>Module 2</strong>
+                <p>EXTRACTING MEANING FROM DATA</p>
+            </a>
+
+            <a href="DS_Module_3.pdf" class="module-item">
+                <strong>Module 3</strong>
+                <p>FEATURE SELECTION AND DECISION TREE FOUNDATIONS</p>
+            </a>
+
+             <a href="DS_Module_4.pdf" class="module-item">
+                <strong>Module 4</strong>
+                <p>ENSEMBLE LEARNING</p>
+             </a>
+
+             <a href="DS_Module_5.pdf" class="module-item">
+                <strong>Module 5</strong>
+                <p>DIMENSIONALITY REDUCTION</p>
+             </a>
+
+             <div class="add-exp-section">
+    <a  class="add-exp">+ Add Module</a>
+</div>
+        </div>
+
+    </div>
+
+        <!-- ID Card -->
+
+        <div class="id-card">
+
+           
+
+            <!-- Photo -->
+
+            <div class="photo">
+                <Img class="imagee" src="GaneshKumar.jpeg" alt="PHOTO" />
+            </div>
+
+
+            <!-- Details -->
+
+            <div class="details">
+
+                <p>
+                    <span>Name</span>
+                    <b>: Ganesh Kumar</b>
+                </p>
+
+                <p>
+                    <span>Roll No</span>
+                    <b>: 24102A030123</b>
+                </p>
+
+                <p>
+                    <span>Section</span>
+                    <b>: DS-2</b>
+                </p>
+
+                <p>
+                    <span>Branch</span>
+                    <b>: Data Science</b>
+                </p>
+
+                <p>
+                    <span>Faculty</span>
+                    <b>: S.Bosubabu</b>
+                </p>
+
+                <p>
+                    <span>Designation</span>
+                    <b>: Asst.professor</b>
+                </p>
+
+            </div>
+
+            <div class ="bottom">
+
+            <div class="social-icons">
+
+    <a href="https://www.linkedin.com/in/ganesh-kumar-tadiboina-3080133a4/?isSelfProfile=true" target="_blank">
+        <i class="fa-brands fa-linkedin"></i>
+    </a>
+
+    <a href="https://github.com/ganeshtadiboina30-tech" target="_blank">
+        <i class="fa-brands fa-github"></i>
+    </a>
+
+    <a href="https://www.instagram.com/ganeshkumar_2006/" target="_blank">
+        <i class="fa-brands fa-instagram"></i>
+    </a>
+
+    <a href="https://www.youtube.com/@GaneshkumarTadiboina" target="_blank">
+        <i class="fa-brands fa-youtube"></i>
+    </a>
+
+</div>
+            <div class="card-bottom">
+    <a href="profile.html" class="view-more">View More</a>
+</div>
+        </div>
+
+        </div>
+
+    </main>
+
+     <div class="analysis-card">
+
+    <h1 class="analysis-heading">Experiment 4:</h1>
+    <!-- Video + Heading -->
+
+    <div class="analysis-top">
+
+        <div class="video-box">
+           <video controls>
+            <source src="Video.mp4" type="video/mp4">
+           </video>
+        </div>
+
+        <h2 class="analysis-heading">
+            Data Wrangling
+        </h2>
+        
+    </div>
+
+
+    <!-- Description -->
+
+    <div class="analysis-content">
+
+        <p>
+            
+        This experiment focuses on transforming raw and unstructured data
+        into a clean, organized, and meaningful format suitable for data
+        analysis. Students learn how to handle missing values, remove
+        duplicate records, identify and treat inconsistent data, correct
+        data types, and combine datasets using Python Pandas. It also
+        introduces filtering, sorting, grouping, and reshaping techniques
+        that help improve data quality and prepare datasets for further
+        analysis and visualization.
+        </p>
+
+    </div>
+
+    <!-- Overview Navigation -->
+
+    <div class="overview-section">
+
+        <a href="overview4.html" class="overview" >OVERVIEW</a>
+
+        <a href="exp-4A.html" class="topic">A</a>
+
+        <a href="exp-4B.html" class="topic">B</a>
+
+        <a href="exp-4C.html" class="topic">C</a>
+    </div>
+    <div class="add-exp-section">
+    <a class="add-exp">+ Add Exp</a>
+</div>
+</div>
+
+    <div class="analysis-card">
+
+    <h1 class="analysis-heading">Experiment 5:</h1>
+    <!-- Video + Heading -->
+
+    <div class="analysis-top">
+
+        <div class="video-box">
+           <video controls>
+            <source src="Video.mp4" type="video/mp4">
+           </video>
+        </div>
+
+        <h2 class="analysis-heading">
+            Data Visualization with Matplotlib and SeaBorn 
+        </h2>
+        
+    </div>
+
+
+    <!-- Description -->
+
+    <div class="analysis-content">
+
+        <p>
+            This experiment introduces data visualization techniques for
+        understanding patterns, trends, distributions, and relationships
+        within datasets. Students learn to create meaningful graphs using
+        Matplotlib and Seaborn in Python. Matplotlib provides control over
+        plot elements and customization, while Seaborn simplifies the
+        creation of attractive statistical visualizations. The experiment
+        helps students select suitable charts, customize labels and titles,
+        and communicate analytical findings clearly through graphical
+        representations.
+        </p>
+
+    </div>
+
+    <!-- Overview Navigation -->
+
+    <div class="overview-section">
+
+        <a href="overview5.html" class="overview" >OVERVIEW</a>
+
+        <a href="exp-5A.html" class="topic">A</a>
+
+        <a href="exp-5B.html" class="topic">B</a>
+
+        <a href="exp-5C.html" class="topic">C</a>
+
+        <a href="exp-5D.html" class="topic">D</a>
+
+        <a href="exp-5E.html" class="topic">E</a>
+
+    </div>
+    <div class="add-exp-section">
+    <a class="add-exp">+ Add Exp</a>
+</div>
+</div>
+
+    <div class="analysis-card">
+
+    <h1 class="analysis-heading">Experiment 6:</h1>
+    <!-- Video + Heading -->
+
+    <div class="analysis-top">
+
+        <div class="video-box">
+           <video controls>
+            <source src="Video.mp4" type="video/mp4">
+           </video>
+        </div>
+
+        <h2 class="analysis-heading">
+            TIME SERIES ANALYSIS
+        </h2>
+        
+    </div>
+
+
+    <!-- Description -->
+
+    <div class="analysis-content">
+
+        <p>
+            Time series analysis is a statistical technique used to
+            analyze data collected over a period of time. It helps us
+            understand patterns, trends, seasonal variations and
+            changes in data. Time series data can be observed at
+            different intervals such as daily, weekly, monthly or
+            yearly. By studying historical data, we can identify
+            important patterns and use them to make predictions about
+            future values. Time series analysis is widely used in
+            business, finance, weather forecasting, economics and
+            many other fields. Important concepts include trend,
+            seasonality, cyclic patterns and irregular variations.
+            Visualization is also an important part of understanding
+            time-dependent data.
+        </p>
+
+    </div>
+
+    <!-- Overview Navigation -->
+
+    <div class="overview-section">
+
+        <a href="overview6.html" class="overview" >OVERVIEW</a>
+
+        <a href="exp-6A.html" class="topic">A</a>
+
+        <a href="exp-6B.html" class="topic">B</a>
+
+        <a href="exp-6C.html" class="topic">C</a>
+
+        <a href="exp-6D.html" class="topic">D</a>
+
+        <a href="exp-6E.html" class="topic">E</a>
+
+        <a href="exp-6F.html" class="topic">F</a>
+
+        <a href="exp-6G.html" class="topic">G</a>
+
+    </div>
+    <div class="add-exp-section">
+    <a class="add-exp">+ Add Exp</a>
+</div>
+</div>
+
+</body>
+
+</html>
